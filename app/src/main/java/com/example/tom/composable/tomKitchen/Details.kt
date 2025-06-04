@@ -32,7 +32,7 @@ fun Details() {
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Card(
-            painterResource(id = R.drawable.temperature),
+                painterResource(id = R.drawable.temperature),
             title = "1000 V",
             description = "Temperature"
         )

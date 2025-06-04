@@ -57,7 +57,6 @@ fun TomKitchen(){
             .zIndex(1f)
     )
 
-    Box() { // background image
         Icon(
             painter = painterResource(id = R.drawable.ellipse_3),
             contentDescription = null,
@@ -68,7 +67,6 @@ fun TomKitchen(){
             tint = Color.Unspecified
         )
 
-    }
 
     Column(
         modifier = Modifier
