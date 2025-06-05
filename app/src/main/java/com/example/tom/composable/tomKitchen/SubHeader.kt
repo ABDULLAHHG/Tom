@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -33,7 +34,9 @@ fun SubHeader() {
 
 
         Column(
-            modifier = Modifier.size(196.dp, 66.dp),
+            modifier = Modifier
+                .height(66.dp)
+                .wrapContentWidth(),
             horizontalAlignment = Alignment.Start,
         ) {
 
@@ -49,11 +52,10 @@ fun SubHeader() {
 
             Spacer(Modifier.height(12.dp))
             Row(
-                modifier = Modifier
-                    .size(91.dp, 30.dp)
+                modifier = Modifier.height(91.dp).wrapContentWidth()
                     .clip(RoundedCornerShape(8.dp))
                     .background(Color(0xFFD0E5F0))
-                    .padding(horizontal = 8.dp , vertical = 6.dp),
+                    .padding(horizontal = 8.dp, vertical = 6.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(4.dp),
 
@@ -66,15 +68,15 @@ fun SubHeader() {
 
                 )
                 Text(
-                    "5 cheese",
+                    "5 cheeses",
                     fontSize = 12.sp,
-                    modifier = Modifier.size(55.dp, 18.dp),
+                    modifier = Modifier.height(18.dp).wrapContentWidth(),
                     fontWeight = FontWeight(500),
                     letterSpacing = 0.sp,
                     lineHeight = 12.sp,
                     fontFamily = sansArabic,
                     color = Color(0xFF03578A)
-                    )
+                )
             }
         }
 
@@ -83,7 +85,8 @@ fun SubHeader() {
         Column(
             horizontalAlignment = Alignment.End,
             modifier = Modifier
-                .size(132.dp, 58.dp)
+                .height(58.dp)
+                .fillMaxWidth()
                 .padding(top = 17.dp, bottom = 17.dp),
             verticalArrangement = Arrangement.Center
         ) {

@@ -7,13 +7,19 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -38,136 +45,145 @@ import com.example.tom.composable.tomKitchen.SubHeader
 import com.example.tom.ui.theme.sansArabic
 
 @Composable
-fun TomKitchen(){
+fun TomKitchen() {
     Box( // Background TODO: make it function and move it to another file
         modifier = Modifier
-            .size(360.dp, 400.dp)
+            .height(400.dp)
+            .fillMaxWidth()
             .background(Color(0x80035484))
-            .padding(horizontal = 16.dp)
-        ,
+            .padding(horizontal = 16.dp),
         contentAlignment = Alignment.TopEnd
     ) {}
 
-    Image( // food image
-        painter = painterResource(id = R.mipmap.ic_launcher_foreground),
+
+    Icon(
+        painter = painterResource(id = R.drawable.ellipse_3),
         contentDescription = null,
         modifier = Modifier
-            .padding(start = 148.dp , top = 58.dp)
-            .size(188.dp , 168.dp)
-            .zIndex(1f)
+            .graphicsLayer()
+            .size(384.750244140625.dp, 440.2118225097656.dp)
+            .offset(x = (-110).dp, y = (LocalConfiguration.current.screenHeightDp * -0.015).dp),
+        tint = Color.Unspecified
     )
 
-        Icon(
-            painter = painterResource(id = R.drawable.ellipse_3),
-            contentDescription = null,
+    Box() {
+        Column(
             modifier = Modifier
-                .graphicsLayer()
-                .size(384.750244140625.dp, 414.2118225097656.dp)
-                .offset(x = (-94).dp, y = (-10).dp),
-            tint = Color.Unspecified
-        )
-
-
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .clip(RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp))
-    ) {
-
-
-        Row( // mobile status bar
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(40.dp)
-                .background(Color.Black)
-                .padding(horizontal = 16.dp)
+                .fillMaxSize()
+                .clip(RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp))
         ) {
+            Row( // mobile status bar
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(40.dp)
+                    .background(Color.White)
+                    .padding(horizontal = 16.dp)
+            ) {}
+            LazyColumn(modifier = Modifier.wrapContentHeight()) {
+                item() {
+                    Box(){
+                        Column() {
+                            Column(
+                                // header
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(162.dp)
+                                    .padding(start = 16.dp, end = 16.dp),
 
-        }
+                                ) {
+                                Row(modifier = Modifier.padding(top = 40.dp)) {
+                                    Column(
+                                        horizontalAlignment = Alignment.Start,
+                                        verticalArrangement = Arrangement.spacedBy(20.dp)
+                                    ) {
 
-        Column( // header
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(162.dp)
-                .padding(start = 16.dp, end = 16.dp)
+                                        Row(
+                                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                                        ) {
+                                            Icon(
+                                                painter = painterResource(id = R.drawable.unkownicon1),
+                                                contentDescription = null,
+                                                tint = Color(0xFFFFFFFF)
 
-        ) {
-            Row(modifier = Modifier.padding(top = 40.dp)) {
-                Column(
-                    horizontalAlignment = Alignment.Start,
-                    verticalArrangement = Arrangement.spacedBy(20.dp)
-                ) {
+                                            )
 
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.unkownicon1),
+                                            Text(
+                                                "High tension",
+                                                color = Color(0xDEFFFFFF),
+                                            )
+                                        }
+
+                                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                                            Icon(
+                                                painter = painterResource(id = R.drawable.cooker),
+                                                contentDescription = null,
+                                                tint = Color(0xFFFFFFFF)
+                                            )
+
+                                            Text("Shocking foods", color = Color(0xDEFFFFFF))
+                                        }
+
+                                    }
+
+
+                                }
+
+
+                            }
+
+
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .wrapContentHeight()
+                                    .clip(RoundedCornerShape(topEnd = 16.dp, topStart = 16.dp))
+                                    .background(Color(0xFFEEF4F6))
+                                    .padding(16.dp, 0.dp)
+                            ) {
+                                Spacer(Modifier.height(32.dp))
+                                SubHeader()
+                                Spacer16Vertical()
+                                Content()
+                                Spacer12Vertical()
+                                Details()
+                                Text(
+                                    "Preparation",
+                                    modifier = Modifier.fillMaxWidth(),
+                                    fontSize = 18.sp,
+                                    color = Color(0xDE1F1F1E),
+                                    lineHeight = 16.sp,
+                                    letterSpacing = 0.5.sp,
+                                    fontFamily = sansArabic,
+                                    fontWeight = FontWeight.Medium
+                                )
+                                Preparation(
+                                    listOf(
+                                        "Put the pasta in a toaster.",
+                                        "Pour battery juice over it.",
+                                        "Wait for the spark to ignite.",
+                                        "Serve with an insulating glove.",
+                                        "Serve with an insulating glove."
+
+                                    )
+                                )
+
+                            }
+                        }
+                        Image( // food image
+                            painter = painterResource(id = R.mipmap.ic_launcher_foreground),
                             contentDescription = null,
-                            tint = Color(0xFFFFFFFF)
-
+                            modifier = Modifier // 148.dp
+                                .offset(x = (LocalConfiguration.current.screenWidthDp * 0.415).dp, y = 18.dp)
+                                .size(190.dp, 180.dp)
+                                .zIndex(1f)
                         )
 
-                        Text(
-                            "High tension",
-                            color = Color(0xDEFFFFFF),
-                        )
                     }
-
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.cooker),
-                            contentDescription = null,
-                            tint = Color(0xFFFFFFFF)
-                        )
-
-                        Text("Shocking foods", color = Color(0xDEFFFFFF))
-                    }
-
                 }
-
-
             }
-
-
         }
 
-
-        Column( // TODO : Find better way to make the button appear in the bottom without taking size from middle container
-            modifier = Modifier
-                .fillMaxWidth()
-                .height((620 - 88).dp)
-                .clip(RoundedCornerShape(topEnd = 16.dp, topStart = 16.dp))
-                .background(Color(0xFFEEF4F6))
-                .padding(16.dp, 0.dp)
-        ) {
-            Spacer(Modifier.height(32.dp))
-            SubHeader()
-            Spacer16Vertical()
-            Content()
-            Spacer12Vertical()
-            Details()
-            Text(
-                "Preparation",
-                modifier = Modifier.fillMaxWidth(),
-                fontSize = 18.sp,
-                color = Color(0xDE1F1F1E),
-                lineHeight = 16.sp,
-                letterSpacing = 0.5.sp,
-                fontFamily = sansArabic,
-                fontWeight = FontWeight.Medium
-            )
-            Preparation(
-                listOf(
-                    "Put the pasta in a toaster.",
-                    "Pour battery juice over it.",
-                    "Wait for the spark to ignite.",
-                    "Serve with an insulating glove."
-                )
-            )
-
-        }
-
-        BottomButton()
     }
+    BottomButton()
+
 }

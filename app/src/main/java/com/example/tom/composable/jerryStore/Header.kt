@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -23,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -39,7 +41,9 @@ fun Header(){
     Row(
         modifier = Modifier
             .padding(vertical = 4.dp, horizontal = 16.dp)
-            .size(360.dp, 68.dp), verticalAlignment = Alignment.CenterVertically
+            .height(68.dp)
+            .fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically
     ) { // Header
 
         Image(
@@ -78,7 +82,8 @@ fun Header(){
         Box(
             modifier = Modifier
                 .height(70.dp)
-                .padding(start = (90-32).dp)
+                .fillMaxWidth()
+                .offset(x = (-3.5).dp)
             ,
             contentAlignment = Alignment.CenterEnd
         ) {
@@ -120,6 +125,7 @@ fun Header(){
                     fontFamily = sansArabic,
                     lineHeight = 10.sp,
                     letterSpacing = 0.sp,
+                    modifier = Modifier.offset(y = (-0.5).dp)
                 )
             }
         }
