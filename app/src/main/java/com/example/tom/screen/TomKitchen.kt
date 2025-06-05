@@ -1,5 +1,7 @@
 package com.example.tom.screen
 
+import android.annotation.SuppressLint
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -23,6 +25,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -31,6 +34,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
@@ -46,6 +50,7 @@ import com.example.tom.ui.theme.sansArabic
 
 @Composable
 fun TomKitchen() {
+    val config = PortraitWidth()
     Box( // Background TODO: make it function and move it to another file
         modifier = Modifier
             .height(400.dp)
@@ -169,14 +174,21 @@ fun TomKitchen() {
 
                             }
                         }
-                        Image( // food image
-                            painter = painterResource(id = R.mipmap.ic_launcher_foreground),
-                            contentDescription = null,
-                            modifier = Modifier // 148.dp
-                                .offset(x = (LocalConfiguration.current.screenWidthDp * 0.415).dp, y = 18.dp)
-                                .size(190.dp, 180.dp)
-                                .zIndex(1f)
-                        )
+                        Box(modifier = Modifier.fillMaxWidth(),
+                            contentAlignment = Alignment.CenterEnd) {
+                            Image( // food image
+                                painter = painterResource(id = R.mipmap.ic_launcher_foreground),
+                                contentDescription = null,
+                                modifier = Modifier // 148.dp
+                                    .offset(
+                                        x = (LocalConfiguration.current.screenWidthDp * -0.07).dp,
+
+                                        y = 18.dp
+                                    )
+                                    .size(190.dp, 180.dp)
+                                    .zIndex(1f)
+                            )
+                        }
 
                     }
                 }
@@ -186,4 +198,16 @@ fun TomKitchen() {
     }
     BottomButton()
 
+}
+
+@Composable
+fun PortraitWidth(): Dp {
+    val configuration = LocalConfiguration.current
+    return remember(configuration) {
+        if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            configuration.screenWidthDp.dp
+        } else {
+            configuration.screenHeightDp.dp
+        }
+    }
 }

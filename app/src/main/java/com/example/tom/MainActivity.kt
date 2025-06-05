@@ -24,8 +24,8 @@ class MainActivity : ComponentActivity() {
         WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
         setContent {
             TomTheme {
-                TomKitchen()
-//                JerryStore()
+//                TomKitchen()
+                JerryStore()
 //                TomAccount()
             }
         }

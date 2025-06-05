@@ -30,65 +30,66 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun BottomButton() {
-    Box(
-        modifier = Modifier
-            .offset(y = (LocalConfiguration.current.screenHeightDp-50).dp)
-            .height(86.dp)
-            .fillMaxWidth()
-            .background(Color(0xFFFFFFFF))
-            .border(1.dp, Color(0x1F1F1E1F))
-            .padding(16.dp, 15.dp)
-        ,
-        contentAlignment = Alignment.BottomCenter
-    ) {
-        Button(
-            onClick = { /*TODO*/ },
-            shape = RoundedCornerShape(16.dp),
+    Box(modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.BottomCenter) {
+        Box(
             modifier = Modifier
-                .fillMaxSize(),
-            colors = ButtonColors(
-                Color(0xFF226993),
-                Color(0xDEFFFFFF),
-                Color(0xFF226993),
-                Color(0xFF226993)
-            )
+                .height(86.dp)
+                .fillMaxWidth()
+                .background(Color(0xFFFFFFFF))
+                .border(1.dp, Color(0x1F1F1F1E))
+                .padding(16.dp, 15.dp),
+            contentAlignment = Alignment.BottomCenter
         ) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                Text("Add to cart")
-
-                Box(
-                    modifier = Modifier
-                        .clip(CircleShape)
-                        .size(5.dp)
-                        .background(Color(0x61FFFFFF))
+            Button(
+                onClick = { /*TODO*/ },
+                shape = RoundedCornerShape(16.dp),
+                modifier = Modifier
+                    .fillMaxSize(),
+                colors = ButtonColors(
+                    Color(0xFF226993),
+                    Color(0xDEFFFFFF),
+                    Color(0xFF226993),
+                    Color(0xFF226993)
                 )
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    Text("Add to cart")
 
-                Column() {
-                    Text(
-                        "3 cheeses",
-                        fontFamily = null,
-                        lineHeight = 16.sp,
-                        letterSpacing = 0.5.sp,
-                        textAlign = TextAlign.Center,
-                        fontSize = 14.sp,
+                    Box(
+                        modifier = Modifier
+                            .clip(CircleShape)
+                            .size(5.dp)
+                            .background(Color(0x61FFFFFF))
                     )
 
-                    Text(
-                        "5 cheeses",
-                        fontFamily = null,
-                        lineHeight = 16.sp,
-                        letterSpacing = 0.5.sp,
-                        textAlign = TextAlign.Center,
-                        fontSize = 12.sp,
-                        textDecoration = TextDecoration.LineThrough,
-                        color = Color(0xCCFFFFFF)
-                    )
+                    Column() {
+                        Text(
+                            "3 cheeses",
+                            fontFamily = null,
+                            lineHeight = 16.sp,
+                            letterSpacing = 0.5.sp,
+                            textAlign = TextAlign.Center,
+                            fontSize = 14.sp,
+                        )
+
+                        Text(
+                            "5 cheeses",
+                            fontFamily = null,
+                            lineHeight = 16.sp,
+                            letterSpacing = 0.5.sp,
+                            textAlign = TextAlign.Center,
+                            fontSize = 12.sp,
+                            textDecoration = TextDecoration.LineThrough,
+                            color = Color(0xCCFFFFFF)
+                        )
+                    }
                 }
             }
         }
     }
-}
 
+}

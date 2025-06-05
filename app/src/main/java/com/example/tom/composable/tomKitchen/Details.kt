@@ -2,8 +2,10 @@ package com.example.tom.composable.tomKitchen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -28,19 +30,23 @@ fun Details() {
         )
     Row(
         modifier = Modifier
+            .fillMaxWidth()
             .padding(top = 12.dp, bottom = 12.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
+        horizontalArrangement = Arrangement.Center
     ) {
         Card(
                 painterResource(id = R.drawable.temperature),
             title = "1000 V",
             description = "Temperature"
         )
+        Spacer(Modifier.width(8.dp))
         Card(
             painterResource(id = R.drawable.timer_02),
             title = "3 sparks",
             description = "Time"
         )
+        Spacer(Modifier.width(8.dp))
+
         Card(
             painterResource(id = R.drawable.evil),
             title = "1M 12K",

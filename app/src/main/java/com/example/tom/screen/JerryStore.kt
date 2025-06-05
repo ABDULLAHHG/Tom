@@ -41,7 +41,7 @@ import com.example.tom.ui.theme.sansArabic
 
 @Composable
 fun JerryStore() {
-
+    val mobileWidth = PortraitWidth()
     LazyColumn(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -99,13 +99,15 @@ fun JerryStore() {
 
 
                 Column(
-                    modifier = Modifier.height(745.dp)
+                    modifier = Modifier.height(
+                        (745 + ((mobileWidth.value - LocalConfiguration.current.screenWidthDp) * 0.55)).dp
+                    )
                 ) {
                     Spacer(modifier = Modifier.height(16.dp))
                     val columnCount = if (LocalConfiguration.current.screenWidthDp < 600) 2 else 4
                     LazyVerticalGrid(
                         columns = GridCells.Fixed(columnCount),
-                        contentPadding = PaddingValues(top = 16.dp , bottom = 28.dp),
+                        contentPadding = PaddingValues(top = 16.dp, bottom = 28.dp),
                         verticalArrangement = Arrangement.spacedBy(28.dp),
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                         userScrollEnabled = false
@@ -162,10 +164,9 @@ fun JerryStore() {
                             )
                         }
                     }
-
-
                 }
             }
+            Spacer(modifier = Modifier.height(16.dp))
 
 
         }
@@ -188,7 +189,7 @@ fun TomHasMoney() {
                 .fillMaxWidth()
                 .offset(
                     x = (-1).dp,
-                    y = (360 * -0.051).dp
+                    y = (360 * -0.053).dp
                 )
         ) {
             Box(modifier = Modifier.offset(x = (30).dp, y = 18.dp)) {
