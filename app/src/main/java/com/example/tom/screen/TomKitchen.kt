@@ -152,7 +152,7 @@ fun TomKitchen() {
                                 Spacer12Vertical()
                                 Details()
                                 Text(
-                                    "Preparation",
+                                    "Preparation method",
                                     modifier = Modifier.fillMaxWidth(),
                                     fontSize = 18.sp,
                                     color = Color(0xDE1F1F1E),
